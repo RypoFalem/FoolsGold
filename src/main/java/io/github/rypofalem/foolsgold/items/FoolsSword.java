@@ -1,0 +1,41 @@
+package io.github.rypofalem.foolsgold.items;
+
+import io.github.rypofalem.foolsgold.DeathCausing;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Arrays;
+
+public class FoolsSword extends FoolsTool implements DeathCausing {
+	private final double damage = 20;
+
+	public FoolsSword(){
+		super(new ItemStack(Material.GOLD_SWORD));
+		ItemMeta meta = itemStack.getItemMeta();
+		meta.setDisplayName("Sword of Puzzles");
+		meta.setLore(Arrays.asList(
+				"A sword of mysterious origin",
+				"and even mysteriouser purpose. ",
+				"Can you solve the puzzle?"));
+		itemStack.setItemMeta(meta);
+	}
+
+	@EventHandler
+	public void onPlayerInteract(PlayerInteractEvent event) {
+		if(!event.getHand().equals(EquipmentSlot.HAND)) return;
+		event.setCancelled(true);
+		Player player = event.getPlayer();
+		hurtPlayer(player, player, damage);
+		player.getInventory().setItemInMainHand(damageTool(event.getItem(), (short)5, player.getLocation()));
+	}
+
+	@Override
+	public String getDeathMessage(Player deceased) {
+		return String.format("%s commited sudoku.", deceased.getName());
+	}
+}

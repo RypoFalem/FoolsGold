@@ -1,0 +1,13 @@
+name: FoolsGold
+description: Make several humorus items availible via command
+author: RypoFalem
+version: 0.1
+main: io.github.rypofalem.foolsgold.FoolsGoldPlugin
+depend: [ Custom ]
+commands:
+  fgmerchant:
+    description: Access FoolsGold merchant
+    permission: foolsgold.merchant
+permissions:
+  foolsgold.merchant:
+    description: use fgmerchant command
