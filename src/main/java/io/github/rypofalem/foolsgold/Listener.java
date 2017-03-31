@@ -15,7 +15,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
@@ -72,6 +71,7 @@ public class Listener implements org.bukkit.event.Listener{
 
 	@EventHandler (priority = EventPriority.MONITOR)
 	public void onPurchase(InventoryClickEvent event){
+		if(event.getClickedInventory() == null) return;
 		if(!event.getClickedInventory().getType().equals(InventoryType.MERCHANT)) return;
 		if(event.getRawSlot() != 2) return;
 		ItemStack result = event.getCurrentItem();

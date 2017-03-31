@@ -22,7 +22,7 @@ public class MerchantGUI {
 					0,
 					100,
 					false);
-			recipe.addIngredient(new ItemStack(Material.GOLD_BLOCK));
+			recipe.addIngredient(new ItemStack(Material.GOLD_INGOT));
 			recipes.add(recipe);
 		}
 		merchant.setRecipes(recipes);
