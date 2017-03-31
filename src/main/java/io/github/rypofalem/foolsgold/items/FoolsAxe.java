@@ -28,11 +28,11 @@ public class FoolsAxe extends FoolsTool{
 	public void onBlockBreak(BlockBreakEvent event) {
 		Material mat = event.getBlock().getType();
 		if(mat.equals(Material.LOG) || mat.equals(Material.LOG_2)){
-			event.getPlayer().performCommand("ch say This tree is too big to handle. Better try something smaller.");
+			event.getPlayer().performCommand("ch say l This tree is too big to handle. Better try something smaller.");
 			event.setCancelled(true);
 		} else if (mat.equals(Material.SAPLING)){
 			FoolsGoldPlugin.getInstance().incrementStat("treesFelled");
-			event.getPlayer().performCommand("ch say Take that, pathetic tree!");
+			event.getPlayer().performCommand("ch say l Take that, pathetic tree!");
 		}
 	}
 }
