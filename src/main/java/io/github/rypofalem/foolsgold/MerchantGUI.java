@@ -16,7 +16,7 @@ public class MerchantGUI {
 		merchant = Bukkit.createMerchant("The April Fool");
 		ArrayList<MerchantRecipe> recipes = new ArrayList<>();
 		for(FoolsTool tool : tools){
-			MerchantRecipe recipe = new MerchantRecipe(tool.spawnItemStack(1), 0, 1, false);
+			MerchantRecipe recipe = new MerchantRecipe(tool.spawnItemStack(1), 0, 100, false);
 			recipe.addIngredient(new ItemStack(Material.GOLD_BLOCK));
 			recipes.add(recipe);
 		}
