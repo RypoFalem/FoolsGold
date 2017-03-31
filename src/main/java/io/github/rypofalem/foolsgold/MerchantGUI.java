@@ -1,5 +1,6 @@
 package io.github.rypofalem.foolsgold;
 
+import com.winthier.custom.CustomPlugin;
 import io.github.rypofalem.foolsgold.items.FoolsTool;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -16,7 +17,11 @@ public class MerchantGUI {
 		merchant = Bukkit.createMerchant("The April Fool");
 		ArrayList<MerchantRecipe> recipes = new ArrayList<>();
 		for(FoolsTool tool : tools){
-			MerchantRecipe recipe = new MerchantRecipe(tool.spawnItemStack(1), 0, 100, false);
+			MerchantRecipe recipe = new MerchantRecipe(
+					CustomPlugin.getInstance().getItemManager().spawnItemStack(tool.getCustomId(), 1),
+					0,
+					100,
+					false);
 			recipe.addIngredient(new ItemStack(Material.GOLD_BLOCK));
 			recipes.add(recipe);
 		}
