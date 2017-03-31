@@ -50,7 +50,6 @@ public class FoolsArrow implements DeathCausing{
 
 			arrow.remove();
 			arrow = arrow.getWorld().spawnArrow(spawnArrowLocation, direction, 1.5f, 1);
-			Bukkit.broadcastMessage(String.format("Location: %d, %d, %d\nVelocity: %s", spawnArrowLocation.getBlockX(), spawnArrowLocation.getBlockY(), spawnArrowLocation.getBlockZ(), direction.toString()));
 			makeArrow(arrow, player, FoolsArrow.Stage.two);
 		} else if(player.equals(event.getHitEntity())){
 			FoolsArrow.getInstance().hurtPlayer(player, player, 20);
