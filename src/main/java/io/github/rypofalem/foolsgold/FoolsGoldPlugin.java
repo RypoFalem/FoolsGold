@@ -22,6 +22,7 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 	@Getter
 	static FoolsGoldPlugin instance;
 	List<FoolsTool> tools = new ArrayList<>();
+	private SaveConfigTask saveConfigTask;
 
 	public FoolsGoldPlugin(){
 		instance = this;
@@ -32,6 +33,14 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 		Bukkit.getPluginManager().registerEvents(new Listener(), this);
 		Bukkit.getPluginManager().registerEvents(this, this);
 		this.getCommand("fgmerchant").setExecutor(this);
+		saveDefaultConfig();
+		saveConfigTask = new SaveConfigTask();
+		Bukkit.getScheduler().runTaskTimer(this, saveConfigTask, 180 * 20, 180 * 20);
+	}
+
+	@Override
+	public void onDisable(){
+		saveConfig();
 	}
 
 	@EventHandler
@@ -50,5 +59,22 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 		if(!(sender instanceof Player)) return false;
 		new MerchantGUI((Player)sender, tools).open((Player)sender);
 		return true;
+	}
+
+	public void incrementStat(String path){
+		if(getConfig().isInt(path)) getConfig().set(path, getConfig().getInt(path) + 1);
+		saveConfigTask.saveQueued = true;
+	}
+
+	class SaveConfigTask implements Runnable{
+		boolean saveQueued = false;
+
+		@Override
+		public void run() {
+			if(saveQueued) {
+				saveConfig();
+				saveQueued = false;
+			}
+		}
 	}
 }

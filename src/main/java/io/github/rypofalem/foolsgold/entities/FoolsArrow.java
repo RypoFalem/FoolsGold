@@ -17,15 +17,6 @@ import java.util.UUID;
 
 public class FoolsArrow implements DeathCausing{
 	final HashMap<UUID, Info> arrowTracker = new HashMap<>();
-	final String[] pronouns = {
-			"his",
-			"her",
-			"their",
-			"its",
-			"Pink Jesus's",
-			"the Pumpkin King's",
-			"the Creeper Overlord's"
-	};
 	@Getter
 	static FoolsArrow instance;
 
@@ -51,6 +42,7 @@ public class FoolsArrow implements DeathCausing{
 			arrow.remove();
 			arrow = arrow.getWorld().spawnArrow(spawnArrowLocation, direction, 1.5f, 1);
 			makeArrow(arrow, player, FoolsArrow.Stage.two);
+			FoolsGoldPlugin.getInstance().incrementStat("arrowsBounced");
 		} else if(player.equals(event.getHitEntity())){
 			FoolsArrow.getInstance().hurtPlayer(player, player, 20);
 			arrow.remove();
@@ -67,12 +59,9 @@ public class FoolsArrow implements DeathCausing{
 
 	@Override
 	public String getDeathMessage(Player deceased) {
-		return String.format("%s jumped in front of %s own arrow!", deceased.getName(), getRandomPronoun());
+		return String.format("%s jumped in front of their own arrow!", deceased.getName());
 	}
 
-	String getRandomPronoun(){
-		return pronouns[FoolsGoldPlugin.getInstance().getRand().nextInt(pronouns.length)];
-	}
 
 	enum Stage {
 		one, two

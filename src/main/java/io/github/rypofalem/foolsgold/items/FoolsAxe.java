@@ -1,6 +1,8 @@
 package io.github.rypofalem.foolsgold.items;
 
 
+import io.github.rypofalem.foolsgold.FoolsGoldPlugin;
+import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -10,9 +12,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 
 public class FoolsAxe extends FoolsTool{
+	@Getter
+	private static FoolsAxe instance;
 
 	public FoolsAxe(){
 		super(new ItemStack(Material.GOLD_AXE));
+		instance = this;
 		ItemMeta meta = itemStack.getItemMeta();
 		meta.setDisplayName("Tree Feller");
 		meta.setLore(Arrays.asList("Cuts down the WHOLE tree!"));
@@ -26,6 +31,7 @@ public class FoolsAxe extends FoolsTool{
 			event.getPlayer().performCommand("l This tree is too big to handle. Better try something smaller.");
 			event.setCancelled(true);
 		} else if (mat.equals(Material.SAPLING)){
+			FoolsGoldPlugin.getInstance().incrementStat("treesFelled");
 			event.getPlayer().performCommand("l Take that, pathetic tree!");
 		}
 	}

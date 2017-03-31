@@ -21,9 +21,10 @@ import java.util.List;
 
 public class FoolsPick extends FoolsTool implements DeathCausing{
 	@Getter
-	static FoolsPick instance;
 	final int COLLAPSECHANCE = 10; //1 in in this number, bigger number is lower chance
 	final int COLLAPSERADIUS = 4;
+	@Getter
+	private static FoolsPick instance;
 
 	public FoolsPick(){
 		super(new ItemStack(Material.GOLD_PICKAXE));
@@ -44,6 +45,7 @@ public class FoolsPick extends FoolsTool implements DeathCausing{
 		if(FoolsGoldPlugin.getInstance().getRand().nextInt(COLLAPSECHANCE) != 0) return;
 		List<Block> blocks = getGriefableHemisphere(event.getPlayer());
 		if(blocks.isEmpty() || blocks.size() < 30) return;
+		FoolsGoldPlugin.getInstance().incrementStat("blocksCollapsed");
 		event.getPlayer().getInventory().setItemInMainHand(
 				this.breakTool(event.getPlayer().getInventory().getItemInMainHand(), event.getPlayer().getLocation())
 		);

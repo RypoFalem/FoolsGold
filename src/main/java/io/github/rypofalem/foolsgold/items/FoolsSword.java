@@ -1,6 +1,7 @@
 package io.github.rypofalem.foolsgold.items;
 
 import io.github.rypofalem.foolsgold.DeathCausing;
+import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,9 +14,12 @@ import java.util.Arrays;
 
 public class FoolsSword extends FoolsTool implements DeathCausing {
 	private final double damage = 20;
+	@Getter
+	private static FoolsSword instance;
 
 	public FoolsSword(){
 		super(new ItemStack(Material.GOLD_SWORD));
+		instance = this;
 		ItemMeta meta = itemStack.getItemMeta();
 		meta.setDisplayName("Sword of Puzzles");
 		meta.setLore(Arrays.asList(

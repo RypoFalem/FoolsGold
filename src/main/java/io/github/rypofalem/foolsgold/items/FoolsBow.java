@@ -2,6 +2,7 @@ package io.github.rypofalem.foolsgold.items;
 
 
 import io.github.rypofalem.foolsgold.entities.FoolsArrow;
+import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
@@ -14,9 +15,12 @@ import java.util.Arrays;
 
 public class FoolsBow extends FoolsTool{
 	private final double damage = 20;
+	@Getter
+	private static FoolsBow instance;
 
 	public FoolsBow(){
 		super(new ItemStack(Material.BOW));
+		instance = this;
 		ItemMeta meta = itemStack.getItemMeta();
 		meta.setDisplayName("Bouncing Bow");
 		meta.setLore(Arrays.asList(

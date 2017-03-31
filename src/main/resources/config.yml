@@ -1,0 +1,15 @@
+#usage stats
+arrowsBounced: 0
+blocksCollapsed: 0
+treesFelled: 0
+
+#deaths
+puzzlesSolved: 0
+arrowsReturned: 0
+stoneBreathers: 0
+
+#purchases
+axesAquired: 0
+bowsBought: 0
+picksPicked: 0
+swordsSold: 0
