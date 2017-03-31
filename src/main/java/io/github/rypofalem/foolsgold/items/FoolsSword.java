@@ -19,6 +19,7 @@ public class FoolsSword extends FoolsTool implements DeathCausing {
 	private final double damage = 20;
 	@Getter
 	private static FoolsSword instance;
+	boolean ignoreEvents = false;
 
 	public FoolsSword(){
 		super(new ItemStack(Material.GOLD_SWORD));
@@ -44,8 +45,10 @@ public class FoolsSword extends FoolsTool implements DeathCausing {
 
 	@EventHandler
 	public void onPlayerAttack(EntityDamageByEntityEvent event) {
+		if(ignoreEvents) return;
 		if(!(event.getDamager() instanceof Player)) return;
 		Player player = (Player) event.getDamager();
+		ignoreEvents = true;
 		hurtPlayer(player, player, damage);
 		player.getInventory().setItemInMainHand(damageTool(player.getEquipment().getItemInMainHand(), (short)5, player.getLocation()));
 	}
