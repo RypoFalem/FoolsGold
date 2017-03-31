@@ -46,7 +46,6 @@ public class Listener implements org.bukkit.event.Listener{
 		Integer ticks = ticksWatchingCollapse.get(player.getUniqueId());
 		if(ticks == null) return;
 		ticksWatchingCollapse.put(player.getUniqueId(), 20);
-		Bukkit.broadcastMessage("test");
 		event.setCancelled(true);
 		FoolsPick.getInstance().hurtPlayer(player, player, event.getDamage()*8); //cave-ins hurt more ;)
 		if(player.isDead()) ticksWatchingCollapse.remove(player.getUniqueId());
