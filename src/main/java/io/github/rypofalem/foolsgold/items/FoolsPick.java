@@ -97,6 +97,6 @@ public class FoolsPick extends FoolsTool implements DeathCausing{
 
 	@Override
 	public String getDeathMessage(Player deceased) {
-		return String.format("%s's greed lead to a cave collapse.", deceased.getName());
+		return String.format("%s's greed led to a cave collapse.", deceased.getName());
 	}
 }
