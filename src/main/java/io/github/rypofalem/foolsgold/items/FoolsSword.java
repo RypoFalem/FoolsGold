@@ -35,11 +35,14 @@ public class FoolsSword extends FoolsTool implements DeathCausing {
 
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {
+		if(ignoreEvents) return;
 		if(!event.getHand().equals(EquipmentSlot.HAND)) return;
 		if(!(event.getAction().equals(Action.LEFT_CLICK_AIR) || event.getAction().equals(Action.LEFT_CLICK_AIR))) return;
 		event.setCancelled(true);
 		Player player = event.getPlayer();
+		ignoreEvents = true;
 		hurtPlayer(player, player, damage);
+		ignoreEvents = false;
 		player.getInventory().setItemInMainHand(damageTool(event.getItem(), (short)5, player.getLocation()));
 	}
 
@@ -50,6 +53,7 @@ public class FoolsSword extends FoolsTool implements DeathCausing {
 		Player player = (Player) event.getDamager();
 		ignoreEvents = true;
 		hurtPlayer(player, player, damage);
+		ignoreEvents = false;
 		player.getInventory().setItemInMainHand(damageTool(player.getEquipment().getItemInMainHand(), (short)5, player.getLocation()));
 	}
 
