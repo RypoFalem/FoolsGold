@@ -19,10 +19,10 @@ import java.util.Random;
 
 public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.bukkit.event.Listener{
 	@Getter
-	Random rand = new Random();
+	Random rand;
 	@Getter
 	static FoolsGoldPlugin instance;
-	List<FoolsTool> tools = new ArrayList<>();
+	List<FoolsTool> tools;
 	private SaveConfigTask saveConfigTask;
 
 	public FoolsGoldPlugin(){
@@ -31,12 +31,18 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 
 	@Override
 	public void onEnable(){
+		tools = new ArrayList<>();
+		 rand = new Random();
 		Bukkit.getPluginManager().registerEvents(new Listener(), this);
 		Bukkit.getPluginManager().registerEvents(this, this);
 		this.getCommand("fgmerchant").setExecutor(this);
 		saveDefaultConfig();
 		saveConfigTask = new SaveConfigTask();
 		Bukkit.getScheduler().runTaskTimer(this, saveConfigTask, 180 * 20, 180 * 20);
+		tools.add(new FoolsSword());
+		tools.add(new FoolsAxe());
+		tools.add(new FoolsBow());
+		tools.add(new FoolsPick());
 	}
 
 	@Override
@@ -46,10 +52,6 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 
 	@EventHandler
 	public void onCustomRegister(CustomRegisterEvent event) {
-		tools.add(new FoolsSword());
-		tools.add(new FoolsAxe());
-		tools.add(new FoolsBow());
-		tools.add(new FoolsPick());
 		for(FoolsTool tool : tools){
 			event.addItem(tool);
 		}
