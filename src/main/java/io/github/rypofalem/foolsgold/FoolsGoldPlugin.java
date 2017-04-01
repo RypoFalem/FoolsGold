@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.bukkit.event.Listener{
@@ -56,6 +57,15 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
+		if(args[0].equals("stats")){
+			StringBuilder sb = new StringBuilder();
+			for(String stat : getConfig().getValues(false).keySet()){
+				if(getConfig().isInt(stat))
+					sb.append( String.format("%s: %d\n", stat, getConfig().getInt(stat)));
+			}
+			sender.sendMessage(sb.toString());
+			return true;
+		}
 		if(!(sender instanceof Player)) return false;
 		new MerchantGUI((Player)sender, tools).open((Player)sender);
 		return true;
