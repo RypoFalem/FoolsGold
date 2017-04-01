@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -31,7 +32,7 @@ public class FoolsBow extends FoolsTool{
 		new FoolsArrow();
 	}
 
-	@EventHandler
+	@EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onShootBowEvent(EntityShootBowEvent event){
 		if(!(event.getProjectile() instanceof Arrow)) return;
 		if(!(event.getEntity() instanceof Player)) return;

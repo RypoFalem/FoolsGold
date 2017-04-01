@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
@@ -33,7 +34,7 @@ public class FoolsSword extends FoolsTool implements DeathCausing {
 		itemStack.setItemMeta(meta);
 	}
 
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGH)
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		if(ignoreEvents) return;
 		if(!event.getHand().equals(EquipmentSlot.HAND)) return;
@@ -46,7 +47,7 @@ public class FoolsSword extends FoolsTool implements DeathCausing {
 		player.getInventory().setItemInMainHand(damageTool(event.getItem(), (short)5, player.getLocation()));
 	}
 
-	@EventHandler
+	@EventHandler (priority = EventPriority.MONITOR)
 	public void onPlayerAttack(EntityDamageByEntityEvent event) {
 		if(ignoreEvents) return;
 		if(!(event.getDamager() instanceof Player)) return;

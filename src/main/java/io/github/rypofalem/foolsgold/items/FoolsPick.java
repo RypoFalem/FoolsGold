@@ -38,7 +38,7 @@ public class FoolsPick extends FoolsTool implements DeathCausing{
 		itemStack.setItemMeta(meta);
 	}
 
-	@EventHandler(priority = EventPriority.MONITOR)
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onBreakBlock(BlockBreakEvent event){
 		if(!isEarth(event.getBlock().getType())) return;
 		if(!isEarth(event.getPlayer().getEyeLocation().clone().add(0, 2, 0).getBlock().getType())) return;

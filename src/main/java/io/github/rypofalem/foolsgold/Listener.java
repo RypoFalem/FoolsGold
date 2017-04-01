@@ -35,7 +35,7 @@ public class Listener implements org.bukkit.event.Listener{
 		instance = this;
 	}
 
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onPlayerDeath(PlayerDeathEvent event){
 		String deathMessage = deathMessages.get(event.getEntity().getUniqueId());
 		if(deathMessage != null){
@@ -56,7 +56,7 @@ public class Listener implements org.bukkit.event.Listener{
 		FoolsArrow.getInstance().onArrowHit(event);
 	}
 
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onDamageInBlock(EntityDamageEvent event){
 		if(!(event.getEntity() instanceof Player)) return;
 		if(event.getCause() != EntityDamageEvent.DamageCause.SUFFOCATION) return;
@@ -69,7 +69,7 @@ public class Listener implements org.bukkit.event.Listener{
 		if(player.isDead()) ticksWatchingCollapse.remove(player.getUniqueId());
 	}
 
-	@EventHandler (priority = EventPriority.MONITOR)
+	@EventHandler (priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onPurchase(InventoryClickEvent event){
 		if(event.getClickedInventory() == null) return;
 		if(!event.getClickedInventory().getType().equals(InventoryType.MERCHANT)) return;
