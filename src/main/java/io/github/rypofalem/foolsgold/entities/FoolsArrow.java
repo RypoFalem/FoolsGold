@@ -41,6 +41,7 @@ public class FoolsArrow implements DeathCausing{
 
 			arrow.remove();
 			arrow = arrow.getWorld().spawnArrow(spawnArrowLocation, direction, 1.5f, 1);
+			arrow.setShooter(player);
 			makeArrow(arrow, player, FoolsArrow.Stage.two);
 			FoolsGoldPlugin.getInstance().incrementStat("arrowsBounced");
 		} else if(player.equals(event.getHitEntity())){
