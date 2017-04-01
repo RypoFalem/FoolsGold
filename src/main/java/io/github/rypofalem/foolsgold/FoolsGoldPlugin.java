@@ -57,7 +57,7 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
-		if(args[0].equals("stats")){
+		if(args != null && args.length > 0 && args[0].equals("stats")){
 			StringBuilder sb = new StringBuilder();
 			for(String stat : getConfig().getValues(false).keySet()){
 				if(getConfig().isInt(stat))
