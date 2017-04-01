@@ -2,10 +2,13 @@ package io.github.rypofalem.foolsgold.items;
 
 import com.winthier.custom.item.CustomItem;
 import com.winthier.custom.item.UncraftableItem;
+import com.winthier.generic_events.ItemNameEvent;
 import io.github.rypofalem.foolsgold.FoolsGoldPlugin;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class FoolsTool implements CustomItem, UncraftableItem {
@@ -44,4 +47,8 @@ public abstract class FoolsTool implements CustomItem, UncraftableItem {
 		return damageTool(item, Short.MAX_VALUE, location);
 	}
 
+	@EventHandler
+	public void onItemName(ItemNameEvent event) {
+		event.setItemName(ChatColor.stripColor(itemStack.getItemMeta().getDisplayName()));
+	}
 }

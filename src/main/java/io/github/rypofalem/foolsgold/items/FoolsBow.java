@@ -1,6 +1,7 @@
 package io.github.rypofalem.foolsgold.items;
 
 
+import com.winthier.generic_events.ItemNameEvent;
 import io.github.rypofalem.foolsgold.entities.FoolsArrow;
 import lombok.Getter;
 import org.bukkit.Material;
