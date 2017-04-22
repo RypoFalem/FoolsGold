@@ -60,6 +60,6 @@ public class FoolsSword extends FoolsTool implements DeathCausing {
 
 	@Override
 	public String getDeathMessage(Player deceased) {
-		return String.format("%s commited sudoku.", deceased.getName());
+		return String.format("%s committed sudoku.", deceased.getName());
 	}
 }

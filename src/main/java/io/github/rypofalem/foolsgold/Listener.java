@@ -35,7 +35,7 @@ public class Listener implements org.bukkit.event.Listener{
 		instance = this;
 	}
 
-	@EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
+	@EventHandler (priority = EventPriority.LOW, ignoreCancelled = true)
 	public void onPlayerDeath(PlayerDeathEvent event){
 		String deathMessage = deathMessages.get(event.getEntity().getUniqueId());
 		if(deathMessage != null){
