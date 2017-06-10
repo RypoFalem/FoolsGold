@@ -14,8 +14,6 @@ import org.bukkit.configuration.Configuration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 
-import static io.github.rypofalem.foolsgold.FoolsGoldPlugin.*;
-
 public abstract class FoolsTool implements CustomItem, UncraftableItem, UpdatableItem {
 	protected final ItemStack itemStack;
 
@@ -26,7 +24,7 @@ public abstract class FoolsTool implements CustomItem, UncraftableItem, Updatabl
 
 	@Override
 	public String getCustomId() {
-		return getInstance().getName() + ":" + this.getClass().getSimpleName();
+		return FoolsGoldPlugin.getInstance().getName() + ":" + this.getClass().getSimpleName();
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package io.github.rypofalem.foolsgold.entities;
 
 import io.github.rypofalem.foolsgold.DeathCausing;
-import io.github.rypofalem.foolsgold.FoolsGoldPlugin;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.bukkit.Bukkit;

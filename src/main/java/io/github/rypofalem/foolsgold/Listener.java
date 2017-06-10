@@ -1,23 +1,14 @@
 package io.github.rypofalem.foolsgold;
 
-import com.winthier.custom.CustomPlugin;
-import com.winthier.custom.item.CustomItem;
 import io.github.rypofalem.foolsgold.entities.FoolsArrow;
-import io.github.rypofalem.foolsgold.items.FoolsAxe;
-import io.github.rypofalem.foolsgold.items.FoolsBow;
 import io.github.rypofalem.foolsgold.items.FoolsPick;
-import io.github.rypofalem.foolsgold.items.FoolsSword;
 import lombok.Getter;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.UUID;

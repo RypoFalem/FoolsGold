@@ -1,7 +1,5 @@
 package io.github.rypofalem.foolsgold.items;
 
-
-import com.winthier.generic_events.ItemNameEvent;
 import io.github.rypofalem.foolsgold.entities.FoolsArrow;
 import lombok.Getter;
 import org.bukkit.Material;
@@ -11,9 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Arrays;
 
 public class FoolsBow extends FoolsTool{
 	private final double damage = 20;

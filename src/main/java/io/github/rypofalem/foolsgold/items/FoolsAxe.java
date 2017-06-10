@@ -1,16 +1,11 @@
 package io.github.rypofalem.foolsgold.items;
 
-
-import io.github.rypofalem.foolsgold.FoolsGoldPlugin;
 import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Arrays;
 
 public class FoolsAxe extends FoolsTool{
 	@Getter
