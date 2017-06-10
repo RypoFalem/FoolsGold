@@ -13,3 +13,28 @@ axesAquired: 0
 bowsBought: 0
 picksPicked: 0
 swordsSold: 0
+
+FoolsBow:
+  description:
+    DisplayName: Bouncing Bow
+    Category: Toy
+    Description: Fire arrows capable of hitting multiple targets.
+    Usage: Fire an arrow and watch it bounce right back to you!
+FoolsSword:
+  description:
+    DisplayName: Sword of Puzzles
+    Category: Toy
+    Description: A sword of mysterious origin and even mysteriouser purpose. Can you solve the puzzle?
+    Usage: Swing the sword to commit sudoku.
+FoolsPick:
+  description:
+    DisplayName: Greedy Pickaxe
+    Category: Toy
+    Description: Capable of mining many blocks at once if you are underground.
+    Usage: Break stone-like blocks to cause cave-ins.
+FoolsAxe:
+  description:
+    DisplayName: Tree Feller
+    Category: Toy
+    Description: Cuts down the WHOLE tree!
+    Usage: Left click sapling to break them.

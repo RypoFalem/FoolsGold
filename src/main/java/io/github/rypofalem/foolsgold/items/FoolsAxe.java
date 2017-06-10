@@ -19,10 +19,6 @@ public class FoolsAxe extends FoolsTool{
 	public FoolsAxe(){
 		super(new ItemStack(Material.GOLD_AXE));
 		instance = this;
-		ItemMeta meta = itemStack.getItemMeta();
-		meta.setDisplayName("Tree Feller");
-		meta.setLore(Arrays.asList("Cuts down the WHOLE tree!"));
-		itemStack.setItemMeta(meta);
 	}
 
 	@EventHandler (priority = EventPriority.HIGH, ignoreCancelled = true)

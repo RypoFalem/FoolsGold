@@ -25,13 +25,6 @@ public class FoolsSword extends FoolsTool implements DeathCausing {
 	public FoolsSword(){
 		super(new ItemStack(Material.GOLD_SWORD));
 		instance = this;
-		ItemMeta meta = itemStack.getItemMeta();
-		meta.setDisplayName("Sword of Puzzles");
-		meta.setLore(Arrays.asList(
-				"A sword of mysterious origin",
-				"and even mysteriouser purpose. ",
-				"Can you solve the puzzle?"));
-		itemStack.setItemMeta(meta);
 	}
 
 	@EventHandler (priority = EventPriority.HIGH)

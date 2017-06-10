@@ -1,26 +1,32 @@
 package io.github.rypofalem.foolsgold.items;
 
 import com.winthier.custom.item.CustomItem;
+import com.winthier.custom.item.ItemDescription;
 import com.winthier.custom.item.UncraftableItem;
+import com.winthier.custom.item.UpdatableItem;
 import com.winthier.generic_events.ItemNameEvent;
 import io.github.rypofalem.foolsgold.FoolsGoldPlugin;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 
-public abstract class FoolsTool implements CustomItem, UncraftableItem {
+import static io.github.rypofalem.foolsgold.FoolsGoldPlugin.*;
+
+public abstract class FoolsTool implements CustomItem, UncraftableItem, UpdatableItem {
 	protected final ItemStack itemStack;
 
 	FoolsTool(ItemStack itemstack){
 		this.itemStack = itemstack;
+		updateItem(itemstack);
 	}
 
 	@Override
 	public String getCustomId() {
-		return FoolsGoldPlugin.getInstance().getName() + ":" + this.getClass().getSimpleName();
+		return getInstance().getName() + ":" + this.getClass().getSimpleName();
 	}
 
 	@Override
@@ -28,6 +34,13 @@ public abstract class FoolsTool implements CustomItem, UncraftableItem {
 		ItemStack item = itemStack.clone();
 		item.setAmount(amount);
 		return item;
+	}
+
+	@Override
+	public void updateItem(ItemStack item){
+		Configuration config = FoolsGoldPlugin.getInstance().getConfig();
+		ItemDescription description = ItemDescription.of( config.getConfigurationSection(this.getClass().getSimpleName()+ ".description") );
+		description.apply(item);
 	}
 
 	//Damages the given itemstack by the given durability. If the durability drops below zero the tool will turn to air

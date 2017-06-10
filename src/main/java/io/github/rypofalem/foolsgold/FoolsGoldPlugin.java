@@ -23,7 +23,6 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 	@Getter
 	static FoolsGoldPlugin instance;
 	List<FoolsTool> tools;
-	private SaveConfigTask saveConfigTask;
 
 	public FoolsGoldPlugin(){
 		instance = this;
@@ -37,8 +36,6 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 		Bukkit.getPluginManager().registerEvents(this, this);
 		this.getCommand("fgmerchant").setExecutor(this);
 		saveDefaultConfig();
-		saveConfigTask = new SaveConfigTask();
-		Bukkit.getScheduler().runTaskTimer(this, saveConfigTask, 180 * 20, 180 * 20);
 		tools.add(new FoolsSword());
 		tools.add(new FoolsAxe());
 		tools.add(new FoolsBow());
@@ -75,18 +72,5 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 
 	public void incrementStat(String path){
 		if(getConfig().isInt(path)) getConfig().set(path, getConfig().getInt(path) + 1);
-		saveConfigTask.saveQueued = true;
-	}
-
-	class SaveConfigTask implements Runnable{
-		boolean saveQueued = false;
-
-		@Override
-		public void run() {
-			if(saveQueued) {
-				saveConfig();
-				saveQueued = false;
-			}
-		}
 	}
 }

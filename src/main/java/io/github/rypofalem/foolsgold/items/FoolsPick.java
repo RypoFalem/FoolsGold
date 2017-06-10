@@ -29,13 +29,6 @@ public class FoolsPick extends FoolsTool implements DeathCausing{
 	public FoolsPick(){
 		super(new ItemStack(Material.GOLD_PICKAXE));
 		instance = this;
-		ItemMeta meta = itemStack.getItemMeta();
-		meta.setDisplayName("Greedy Pickaxe");
-		meta.setLore(Arrays.asList(
-				"\"Must.....dig.....more...\"",
-				"Occasionally mines over",
-				"70 blocks at once!"));
-		itemStack.setItemMeta(meta);
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)

@@ -23,12 +23,6 @@ public class FoolsBow extends FoolsTool{
 	public FoolsBow(){
 		super(new ItemStack(Material.BOW));
 		instance = this;
-		ItemMeta meta = itemStack.getItemMeta();
-		meta.setDisplayName("Bouncing Bow");
-		meta.setLore(Arrays.asList(
-				"Fires arrows capable of",
-				"hitting multiple targets."));
-		itemStack.setItemMeta(meta);
 		new FoolsArrow();
 	}
 

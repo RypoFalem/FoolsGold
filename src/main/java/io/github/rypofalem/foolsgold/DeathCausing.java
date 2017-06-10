@@ -3,8 +3,6 @@ package io.github.rypofalem.foolsgold;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-import static sun.audio.AudioPlayer.player;
-
 public interface DeathCausing {
 
 	public String getDeathMessage(Player deceased);
