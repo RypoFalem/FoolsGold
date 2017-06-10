@@ -69,8 +69,4 @@ public class FoolsGoldPlugin extends JavaPlugin implements CommandExecutor, org.
 		new MerchantGUI((Player)sender, tools).open((Player)sender);
 		return true;
 	}
-
-	public void incrementStat(String path){
-		if(getConfig().isInt(path)) getConfig().set(path, getConfig().getInt(path) + 1);
-	}
 }

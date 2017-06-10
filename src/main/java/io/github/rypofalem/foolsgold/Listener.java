@@ -40,13 +40,6 @@ public class Listener implements org.bukkit.event.Listener{
 		String deathMessage = deathMessages.get(event.getEntity().getUniqueId());
 		if(deathMessage != null){
 			event.setDeathMessage(deathMessage);
-			if(deathMessage.equals( FoolsSword.getInstance().getDeathMessage(event.getEntity()))){
-				FoolsGoldPlugin.getInstance().incrementStat("puzzlesSolved");
-			} else if(deathMessage.equals( FoolsArrow.getInstance().getDeathMessage(event.getEntity()))){
-				FoolsGoldPlugin.getInstance().incrementStat("arrowsReturned");
-			} else if(deathMessage.equals( FoolsPick.getInstance().getDeathMessage(event.getEntity()))){
-				FoolsGoldPlugin.getInstance().incrementStat("stoneBreathers");
-			}
 		}
 		deathMessages.remove(event.getEntity().getUniqueId());
 	}
@@ -67,26 +60,5 @@ public class Listener implements org.bukkit.event.Listener{
 		event.setCancelled(true);
 		FoolsPick.getInstance().hurtPlayer(player, player, event.getDamage()*8); //cave-ins hurt more ;)
 		if(player.isDead()) ticksWatchingCollapse.remove(player.getUniqueId());
-	}
-
-	@EventHandler (priority = EventPriority.MONITOR, ignoreCancelled = true)
-	public void onPurchase(InventoryClickEvent event){
-		if(event.getClickedInventory() == null) return;
-		if(!event.getClickedInventory().getType().equals(InventoryType.MERCHANT)) return;
-		if(event.getRawSlot() != 2) return;
-		ItemStack result = event.getCurrentItem();
-		if(result == null || result.getType() == Material.AIR) return;
-		CustomItem item = CustomPlugin.getInstance().getItemManager().getCustomItem(result);
-		if(item == null) return;
-		String id = item.getCustomId();
-		if(FoolsAxe.getInstance().getCustomId().equals(id)){
-			FoolsGoldPlugin.getInstance().incrementStat("axesAquired");
-		} else if(FoolsBow.getInstance().getCustomId().equals(id)){
-			FoolsGoldPlugin.getInstance().incrementStat("bowsBought");
-		} else if(FoolsPick.getInstance().getCustomId().equals(id)){
-			FoolsGoldPlugin.getInstance().incrementStat("picksPicked");
-		} else if(FoolsSword.getInstance().getCustomId().equals(id)){
-			FoolsGoldPlugin.getInstance().incrementStat("swordsSold");
-		}
 	}
 }

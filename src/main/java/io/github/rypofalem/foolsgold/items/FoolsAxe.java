@@ -28,7 +28,6 @@ public class FoolsAxe extends FoolsTool{
 			event.getPlayer().performCommand("ch say l This tree is too big to handle. Better try something smaller.");
 			event.setCancelled(true);
 		} else if (mat.equals(Material.SAPLING)){
-			FoolsGoldPlugin.getInstance().incrementStat("treesFelled");
 			event.getPlayer().performCommand("ch say l Take that, pathetic tree!");
 		}
 	}

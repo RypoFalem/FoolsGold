@@ -38,7 +38,6 @@ public class FoolsPick extends FoolsTool implements DeathCausing{
 		if(FoolsGoldPlugin.getInstance().getRand().nextInt(COLLAPSECHANCE) != 0) return;
 		List<Block> blocks = getGriefableHemisphere(event.getPlayer());
 		if(blocks.isEmpty() || blocks.size() < 30) return;
-		FoolsGoldPlugin.getInstance().incrementStat("blocksCollapsed");
 		event.getPlayer().getInventory().setItemInMainHand(
 				this.breakTool(event.getPlayer().getInventory().getItemInMainHand(), event.getPlayer().getLocation())
 		);
