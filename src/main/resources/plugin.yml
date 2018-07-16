@@ -2,6 +2,7 @@ name: FoolsGold
 description: Make several humorus items availible via command
 author: RypoFalem
 version: 0.1
+api-version: 1.13
 main: io.github.rypofalem.foolsgold.FoolsGoldPlugin
 depend: [ Custom, GenericEvents ]
 commands:

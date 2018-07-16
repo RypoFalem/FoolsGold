@@ -19,7 +19,7 @@ public class FoolsSword extends FoolsTool implements DeathCausing {
 	boolean ignoreEvents = false;
 
 	public FoolsSword(){
-		super(new ItemStack(Material.GOLD_SWORD));
+		super(new ItemStack(Material.GOLDEN_SWORD));
 		instance = this;
 	}
 

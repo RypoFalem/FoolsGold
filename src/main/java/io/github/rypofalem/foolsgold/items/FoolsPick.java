@@ -25,7 +25,7 @@ public class FoolsPick extends FoolsTool implements DeathCausing{
 	private static FoolsPick instance;
 
 	public FoolsPick(){
-		super(new ItemStack(Material.GOLD_PICKAXE));
+		super(new ItemStack(Material.GOLDEN_PICKAXE));
 		instance = this;
 	}
 

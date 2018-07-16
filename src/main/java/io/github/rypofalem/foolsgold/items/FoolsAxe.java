@@ -12,18 +12,31 @@ public class FoolsAxe extends FoolsTool{
 	private static FoolsAxe instance;
 
 	public FoolsAxe(){
-		super(new ItemStack(Material.GOLD_AXE));
+		super(new ItemStack(Material.GOLDEN_AXE));
 		instance = this;
 	}
 
 	@EventHandler (priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onBlockBreak(BlockBreakEvent event) {
 		Material mat = event.getBlock().getType();
-		if(mat.equals(Material.LOG) || mat.equals(Material.LOG_2)){
-			event.getPlayer().performCommand("ch say l This tree is too big to handle. Better try something smaller.");
-			event.setCancelled(true);
-		} else if (mat.equals(Material.SAPLING)){
-			event.getPlayer().performCommand("ch say l Take that, pathetic tree!");
+		switch(mat){
+			case ACACIA_LOG:
+			case BIRCH_LOG:
+			case DARK_OAK_LOG:
+			case JUNGLE_LOG:
+			case OAK_LOG:
+			case SPRUCE_LOG:
+				event.getPlayer().performCommand("ch say l This tree is too big to handle. Better try something smaller.");
+				event.setCancelled(true);
+				break;
+			case SPRUCE_SAPLING:
+			case ACACIA_SAPLING:
+			case BIRCH_SAPLING:
+			case DARK_OAK_SAPLING:
+			case JUNGLE_SAPLING:
+			case OAK_SAPLING:
+				event.getPlayer().performCommand("ch say l Take that, pathetic tree!");
+				break;
 		}
 	}
 }

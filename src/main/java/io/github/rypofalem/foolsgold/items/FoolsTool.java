@@ -11,6 +11,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.Configuration;
+import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 
@@ -35,10 +36,11 @@ public abstract class FoolsTool implements CustomItem, UncraftableItem, Updatabl
 	}
 
 	@Override
-	public void updateItem(ItemStack item){
+	public ItemStack updateItem(ItemStack item){
 		Configuration config = FoolsGoldPlugin.getInstance().getConfig();
 		ItemDescription description = ItemDescription.of( config.getConfigurationSection(this.getClass().getSimpleName()+ ".description") );
 		description.apply(item);
+		return item;
 	}
 
 	//Damages the given itemstack by the given durability. If the durability drops below zero the tool will turn to air

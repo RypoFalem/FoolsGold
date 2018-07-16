@@ -11,7 +11,6 @@ import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class FoolsBow extends FoolsTool{
-	private final double damage = 20;
 	@Getter
 	private static FoolsBow instance;
 
